@@ -1,52 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import Login from './Login'
+import Cadastro from './Cadastro'
+import Sindico from './Sindico'
+import Morador from './Morador'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <View style={styles.boxLogin}>
-        <View style={styles.titleLogin}>
-          <Text style={styles.title}>Login</Text>
-        </View>
-        <View style={styles.loginInputs}>
-          <Text style={styles.loginText}>cpf</Text>
-        </View>
-      </View>
-    </View>
-  );
-}
+  const Stack = createStackNavigator()
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#babab8',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-  title: {
-    fontSize: "28px",
-    fontWeight: "500",
-  },
-  boxLogin: {
-    backgroundColor: 'white',
-    width: '25%',
-    marginTop: '50px',
-    alignItems: 'center',
-    borderRadius: '15px',
-    padding: '10px',
-  },
-  // titleLogin: {
-  //   backgroundColor: 'white',
-  //   width: '25%',
-  //   marginTop: '50px',
-  //   // alignItems: 'center',
-  //   borderRadius: '15px',
-  //   padding: '10px',
-  // },
-  loginInputs: {
-    marginTop: '10px',
-    display: 'flex',
-    alignContent: 'flex-start'
-  }
-});
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Morador" component={Morador}
+          options={{ title: 'Morador' }}></Stack.Screen>
+
+        <Stack.Screen name="Login" component={Login}
+          options={{ title: 'Gerenciamento de Condomínio' }}></Stack.Screen>
+
+        <Stack.Screen name="Cadastro" component={Cadastro}
+          options={{ title: 'Novo Morador' }}></Stack.Screen>
+
+        <Stack.Screen name="Sindico" component={Sindico}
+          options={{ title: 'Síndico' }}></Stack.Screen>
+
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+
+}
