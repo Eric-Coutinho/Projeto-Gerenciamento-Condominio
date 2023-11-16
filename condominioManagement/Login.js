@@ -2,13 +2,12 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 
 export default function Login(props) {
 
-    function goToUser(){
+    function goToCadastro(){
         props.navigation.navigate("Cadastro")
       }
     function goToSindico(){
         props.navigation.navigate("Sindico")
       }
-
     function goToMorador(){
         props.navigation.navigate("Morador")
       }
@@ -47,7 +46,7 @@ export default function Login(props) {
         <View style={styles.botao}>
           <TouchableOpacity
             style={styles.touch1}
-            onPress={() => goToUser()}
+            onPress={() => goToCadastro()}
           >
             <Text>Login</Text>
           </TouchableOpacity>
