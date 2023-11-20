@@ -121,6 +121,8 @@ const styles = StyleSheet.create({
     marginHorizontal: '15px',
     marginVertical: '15px',
     width: '170px',
+    display: 'flex',
+    justifyContent: 'center',
   },
   infoBox2: {
     backgroundColor: 'white',
@@ -142,14 +144,14 @@ const styles = StyleSheet.create({
     fontSize: '20px',
     fontWeight: '500',
     fontFamily: 'Comic Sans MS',
-    marginLeft: '5px',
+    textAlign: 'center'
   },
   infoText2: {
     color: 'black',
     fontSize: '20px',
     fontWeight: '500',
     fontFamily: 'Comic Sans MS',
-    marginLeft: '24px'
+    textAlign: 'center'
   },
   infoText3: {
     color: 'black',
@@ -158,6 +160,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Comic Sans MS',
     display: 'flex',
     justifyContent: 'center',
+    textAlign: 'center'
   },
   infoText4: {
     color: 'black',
@@ -166,6 +169,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Comic Sans MS',
     display: 'flex',
     justifyContent: 'center',
-    marginLeft: '25px',
+    textAlign: 'center'
   },
 });
