@@ -5,6 +5,9 @@ export default function Morador(props) {
     function goToDenuncias() {
         props.navigation.navigate("Denuncias")
     }
+    function goToPagamento() {
+        props.navigation.navigate("Pagamento")
+    }
 
     return (
         <View style={styles.container}>
@@ -49,6 +52,7 @@ export default function Morador(props) {
                 <View style={styles.infoBox2}>
                     <TouchableOpacity
                         style={styles.touch1}
+                        onPress={() => goToPagamento()}
                     >
                         <Text style={styles.infoText3}>Gerar e Pagar Boletos</Text>
                     </TouchableOpacity>

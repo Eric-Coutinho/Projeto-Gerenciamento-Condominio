@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     },
     form: {
         alignItems: 'flex-start',
-        marginTop: '140px'
+        marginTop: '80px'
     },
     textArea: {
         backgroundColor: 'white',
