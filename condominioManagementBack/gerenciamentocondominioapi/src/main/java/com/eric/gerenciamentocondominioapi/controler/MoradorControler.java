@@ -28,19 +28,19 @@ public class MoradorControler {
         return listRes;
     }
     
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public List<MoradorModel> getMoradorByName(@PathVariable String name){
         List<MoradorModel> listRes = moradorService.findByName(name);
         return listRes;
     }
     
-    @GetMapping("/{cpf}")
+    @GetMapping("/cpf/{cpf}")
     public List<MoradorModel> getMoradorByCpf(@PathVariable String cpf){
         List<MoradorModel> listRes = moradorService.findByCpf(cpf);
         return listRes;
     }
     
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     public List<MoradorModel> getMoradorByEmail(@PathVariable String email){
         List<MoradorModel> listRes = moradorService.findByEmail(email);
         return listRes;
