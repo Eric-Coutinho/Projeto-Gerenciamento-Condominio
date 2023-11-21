@@ -13,4 +13,7 @@ public interface MoradorRepository extends MongoRepository<MoradorModel, String>
 
     @Query("{'cpf': ?0}")
     List<MoradorModel> findByCpf(String cpf);
+    
+    @Query("{'email': ?0}")
+    List<MoradorModel> findByEmail(String email);
 }
