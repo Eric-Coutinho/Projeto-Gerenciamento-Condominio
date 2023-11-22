@@ -34,6 +34,13 @@
 #### Tasks
 - Finished Moradores Back End
 - Able to add new users, see users, update users and delete users using Postman
-- Started to connect Back End with login sistem
+- Started to connect Back End with login system
 
 ![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/2585a2eb-029a-4272-9838-50399ac4afbc)
+
+### Sixth Day
+#### Tasks
+- Connected Login page with DataBase
+- Started to connect Back End with register system
+
+![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/9ad95e67-d806-4fb2-b264-b5e48e3d294e)
