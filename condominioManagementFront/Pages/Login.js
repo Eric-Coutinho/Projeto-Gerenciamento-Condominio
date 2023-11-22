@@ -1,16 +1,40 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
+import axios from 'axios';
+
+const response = await axios.get("http://localhost:8080/morador");
 
 export default function Login(props) {
+  const [email, setEmail] = useState('');
+  const [cpf, setCpf] = useState('');
 
-    function goToCadastro(){
-        props.navigation.navigate("Cadastro")
-      }
-    function goToSindico(){
-        props.navigation.navigate("Sindico")
-      }
-    function goToMorador(){
-        props.navigation.navigate("Morador")
-      }
+  function verifyLogin() {
+    var data = response.data;
+    var morador;
+
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].email == email)
+        if (data[i].cpf == cpf)
+          morador = data[i];
+    }
+
+    if (morador.adm == true)
+      goToSindico();
+    else
+      goToMorador();
+
+    sessionStorage.setItem("morador", JSON.stringify(morador));
+  }
+
+  function goToCadastro() {
+    props.navigation.navigate("Cadastro")
+  }
+  function goToSindico() {
+    props.navigation.navigate("Sindico")
+  }
+  function goToMorador() {
+    props.navigation.navigate("Morador")
+  }
 
   return (
     <View style={styles.container}>
@@ -28,7 +52,7 @@ export default function Login(props) {
           singleline
           maxLength={45}
           style={styles.textAreaEmail}
-          
+          onChangeText = {text => setEmail(text)}
         />
         <Text
           style={{
@@ -42,11 +66,12 @@ export default function Login(props) {
           singleline
           maxLength={45}
           style={styles.textAreaEmail}
+          onChangeText = {text => setCpf(text)}
         />
         <View style={styles.botao}>
           <TouchableOpacity
             style={styles.touch1}
-            onPress={() => goToCadastro()}
+            onPress={() => verifyLogin()}
           >
             <Text>Login</Text>
           </TouchableOpacity>

@@ -51,7 +51,7 @@ public class MoradorControler {
         moradorService.save(newMorador);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public void putMorador(@RequestBody MoradorModel newMorador, @PathVariable String id){
         moradorService.save((String)id, (String) newMorador.getName(), (int) newMorador.getNumApto(), (int) newMorador.getNumBloco(),(String) newMorador.getCpf(), (String) newMorador.getEmail(), newMorador.getAdm());
     }

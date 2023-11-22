@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
+var session = JSON.parse(sessionStorage.getItem("morador"));
 
 export default function Morador(props) {
     function goToDenuncias() {
@@ -12,7 +13,7 @@ export default function Morador(props) {
     return (
         <View style={styles.container}>
             <View style={styles.viewTitle}>
-                <Text style={styles.title}>Bem vindo, nome morador!</Text>
+                <Text style={styles.title}>Bem vindo, { session.name }!</Text>
             </View>
 
             <View style={styles.cards}>
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     cards: {
         display: 'flex',
         justifyContent: 'center',
-        marginTop: '140px',
+        marginTop: '80px',
         flexDirection: "row",
         flexWrap: 'wrap',
         maxWidth: '40%',
