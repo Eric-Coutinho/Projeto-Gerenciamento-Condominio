@@ -1,22 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TextInput, Switch, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import { useState } from 'react';
 
 export default function Cadastro(props) {
+  const [nome, setNome] = useState("");
+  const [numApto, setnumApto] = useState("");
+  const [numBloco, setnumBloco] = useState("");
+  const [email, setEmail] = useState("");
+  const [cpf, setCpf] = useState("");
 
-//   const dbConnect = async () => {
-//     try {
-//       const response = await axios.post("http://localhost:8080/user", {
-//         "name": ":3",
-//         "age": 69,
-//         "password": "uwu"
-//       });
+  const dbConnect = async () => {
+    try {
+      const response = await axios.post("http://localhost:8080/morador", {
+        "name": nome,
+        "numApto": numApto,
+        "numBloco": numBloco,
+        "email": email,
+        "cpf" : cpf,
+        "adm": false
+      });
 
-//       console.log("Resposta da API", response);
-//     } catch (error) {
-//       console.error("Erro ao conectar", error);
-//     }
-//   }
+      console.log("Resposta da API", response);
+    } catch (error) {
+      console.error("Erro ao conectar", error);
+    }
+  }
 
 return (
   <View style={styles.container}>
@@ -26,14 +35,15 @@ return (
         style={{
           paddingHorizontal: '5px',
           paddingVertical: '2px',
-          color: 'white'
+          color: 'white',
+          fontFamily: 'Comic Sans MS'
         }}>
         Nome:</Text>
       <TextInput
         singleline
         maxLength={45}
         style={styles.textArea}
-        
+        onChangeText={text => setNome(text)}
       />
       <View style={styles.Segunda}>
         <View style={styles.formata}>
@@ -41,13 +51,15 @@ return (
             style={{
               paddingHorizontal: '5px',
               paddingVertical: '2px',
-              color: 'white'
+              color: 'white',
+              fontFamily: 'Comic Sans MS'
             }}>
             Número Ap:</Text>
           <TextInput
             singleline
             maxLength={45}
             style={styles.textAreaIdade}
+            onChangeText={text => setnumApto(text)}
           />
         </View>
 
@@ -57,14 +69,15 @@ return (
               paddingHorizontal: '5px',
               paddingVertical: '2px',
               marginLeft: '30px',
-              color: 'white'
+              color: 'white',
+              fontFamily: 'Comic Sans MS'
             }}>
             Bloco:</Text>
           <TextInput
             singleline
             maxLength={45}
             style={styles.textAreaSexo}
-            
+            onChangeText={text => setnumBloco(text)}
           />
         </View>
       </View>
@@ -73,13 +86,15 @@ return (
           paddingHorizontal: '5px',
           paddingVertical: '2px',
           marginTop: '12px',
-          color: 'white'
+          color: 'white',
+          fontFamily: 'Comic Sans MS'
         }}>
         Email:</Text>
       <TextInput
         singleline
         maxLength={45}
         style={styles.textAreaEmail}
+        onChangeText={text => setEmail(text)}
       />
 
       <Text
@@ -87,28 +102,31 @@ return (
           paddingHorizontal: '5px',
           paddingVertical: '2px',
           marginTop: '12px',
-          color: 'white'
+          color: 'white',
+          fontFamily: 'Comic Sans MS'
         }}>
         CPF:</Text>
       <TextInput
         singleline
         maxLength={45}
         style={styles.textAreaEmail}
+        onChangeText={text => setCpf(text)}
       />
 
       <TouchableOpacity
         style={styles.touch1}
-        // onPress={() => dbConnect()}
+        onPress={() => dbConnect()}
       >
-        <Text>Cadastrar</Text>
+        <Text style={{fontFamily: 'Comic Sans MS'}}>Cadastrar</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.touch2}
-        onPress={() => props.navigation.navigate("Login")}
+        onPress={() => props.navigation.navigate("Sindico")}
       >
         <Text style={{
-          color: 'white'
+          color: 'white',
+          fontFamily: 'Comic Sans MS'
         }}>Cancelar</Text>
       </TouchableOpacity>
 
@@ -120,7 +138,6 @@ return (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#19181A',
     backgroundColor: '#262728',
     alignItems: 'center',
   },

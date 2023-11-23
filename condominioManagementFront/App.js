@@ -6,6 +6,7 @@ import Sindico from './Pages/Sindico'
 import Morador from './Pages/Morador'
 import Denuncias from './Pages/Denuncias'
 import Pagamento from './Pages/Pagamento'
+import Info from './Pages/Info'
 
 export default function App() {
   const Stack = createStackNavigator()
@@ -13,6 +14,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* Página de Informações do Condomínio - Síndico e Morador */}
+        <Stack.Screen name="Info" component={Info}
+          options={{ title: 'Informações do Condomínio' }}></Stack.Screen>
 
         {/* Primeira Página */}
         <Stack.Screen name="Login" component={Login}
@@ -37,7 +41,7 @@ export default function App() {
         {/* Página Cadastro de Morador - Síndico */}
         <Stack.Screen name="Cadastro" component={Cadastro}
           options={{ title: 'Novo Morador' }}></Stack.Screen>
-
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

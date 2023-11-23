@@ -1,19 +1,14 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import QRCode from 'react-native-qrcode-svg'
 
+var session = JSON.parse(sessionStorage.getItem("morador"));
 
 export default function Pagamento(props) {
-    function goToDenuncias() {
-        props.navigation.navigate("Denuncias")
-    }
-    function goToPagamento() {
-        props.navigation.navigate("Pagamento")
-    }
 
     return (
         <View style={styles.container}>
             <View style={styles.viewTitle}>
-                <Text style={styles.title}>Bem vindo, nome morador!</Text>
+                <Text style={styles.title}>Bem vindo, { session.name }!</Text>
             </View>
             <View style={styles.infoBox}>
                 <Text style={styles.infoText}>Escaneie o QRCode para gerar o boleto</Text>

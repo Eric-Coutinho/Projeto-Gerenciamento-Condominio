@@ -1,26 +1,32 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-
 var session = JSON.parse(sessionStorage.getItem("morador"));
 
 export default function Síndico(props) {
   function goToDenuncias() {
     props.navigation.navigate("Denuncias")
   }
-  function goToCadastro(){
+  function goToCadastro() {
     props.navigation.navigate("Cadastro")
+  }
+  function goToPagamento() {
+    props.navigation.navigate("Pagamento")
+  }
+  function goToInfo() {
+    props.navigation.navigate("Info")
   }
 
   return (
     <View style={styles.container}>
       <View style={styles.viewTitle}>
-        <Text style={styles.title}>Bem vindo, { session.name }!</Text>
+        <Text style={styles.title}>Bem vindo, {session.name}!</Text>
       </View>
 
       <View style={styles.cards}>
         <View style={styles.infoBox}>
           <TouchableOpacity
             style={styles.touch1}
+            onPress={() => goToInfo()}
           >
             <Text style={styles.infoText}>Informações do Condomínio</Text>
           </TouchableOpacity>
@@ -54,6 +60,7 @@ export default function Síndico(props) {
         <View style={styles.infoBox2}>
           <TouchableOpacity
             style={styles.touch1}
+            onPress={() => goToPagamento()}
           >
             <Text style={styles.infoText3}>Gerar e Pagar Boletos</Text>
           </TouchableOpacity>
