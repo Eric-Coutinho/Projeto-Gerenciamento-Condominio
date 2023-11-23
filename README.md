@@ -44,3 +44,10 @@
 - Started to connect Back End with register system
 
 ![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/9ad95e67-d806-4fb2-b264-b5e48e3d294e)
+
+### Seventh Day
+#### Tasks
+- Connected Register system with database
+- Started Info page
+
+![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/fdf56fa5-56c0-4ac3-9df4-d180222eb679)
