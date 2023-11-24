@@ -1,7 +1,39 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import QRCode from 'react-native-qrcode-svg'
+import axios from 'axios';
 
 var session = JSON.parse(sessionStorage.getItem("morador"));
+
+export async function ShowCards(props) {
+    const response = await axios.get("http://localhost:8080/morador");
+    var data = response.data;
+
+    console.log(data);
+
+    for (var i = 0; i < data.length; i++) {
+        for (var j = 0; j < data.length; j++) {
+            if (data[j].numBloco == i) {
+                <View style={styles.cards}>
+                    <View style={styles.infoBoxNum}>
+                        <Text style={styles.blocoNum}>Bloco {i}</Text>
+                    </View>
+
+                    <View style={styles.cardMoradores}>
+                        <View style={styles.infoBoxMorador}>
+                            <View style={styles.infoBoxMoradorTitle}>
+                                <Text style={styles.moradorName}>{data[j].name}</Text>
+                            </View>
+                            <View style={styles.moradorInfoAdm}>
+                                <Text style={styles.moradorInfoText}>{data[j].numApto}</Text>
+                                <Text style={styles.moradorInfoText}>{data[j].numBloco}</Text>
+                                <Text style={styles.moradorInfoText}>{data[j].email}</Text>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            }
+        }
+    }
+}
 
 export default function Info(props) {
 
@@ -10,63 +42,28 @@ export default function Info(props) {
             <View style={styles.viewTitle}>
                 <Text style={styles.title}>Blocos</Text>
             </View>
-            <View style={styles.cards}>
+
+            <ShowCards></ShowCards>
+
+            {/* <View style={styles.cards}>
                 <View style={styles.infoBoxNum}>
                     <Text style={styles.blocoNum}>Bloco 1</Text>
                 </View>
+
                 <View style={styles.cardMoradores}>
                     <View style={styles.infoBoxMorador}>
                         <View style={styles.infoBoxMoradorTitle}>
                             <Text style={styles.moradorName}>Nome Morador 1</Text>
                         </View>
-                        <View style={styles.moradorInfo}>
+                        <View style={styles.moradorInfoAdm}>
                             <Text style={styles.moradorInfoText}>Apartamento 1</Text>
                             <Text style={styles.moradorInfoText}>Bloco 1</Text>
                             <Text style={styles.moradorInfoText}>morador1@hotmail.com</Text>
                             <Text style={styles.moradorInfoText}>0987603640 (caso adm)</Text>
                         </View>
                     </View>
-                    <View style={styles.infoBoxMorador}>
-                        <View style={styles.infoBoxMoradorTitle}>
-                            <Text style={styles.moradorName}>Nome Morador 2</Text>
-                        </View>
-                        <View style={styles.moradorInfo}>
-                            <Text style={styles.moradorInfoText}>Apartamento 2</Text>
-                            <Text style={styles.moradorInfoText}>Bloco 1</Text>
-                            <Text style={styles.moradorInfoText}>morador2@hotmail.com</Text>
-                            <Text style={styles.moradorInfoText}>0987603640 (caso adm)</Text>
-                        </View>
-                    </View>
                 </View>
-
-                <View style={styles.infoBoxNum}>
-                    <Text style={styles.blocoNum}>Bloco 2</Text>
-                </View>
-                <View style={styles.cardMoradores}>
-                    <View style={styles.infoBoxMorador}>
-                        <View style={styles.infoBoxMoradorTitle}>
-                            <Text style={styles.moradorName}>Nome Morador 3</Text>
-                        </View>
-                        <View style={styles.moradorInfo}>
-                            <Text style={styles.moradorInfoText}>Apartamento 1</Text>
-                            <Text style={styles.moradorInfoText}>Bloco 2</Text>
-                            <Text style={styles.moradorInfoText}>morador3@hotmail.com</Text>
-                            <Text style={styles.moradorInfoText}>0987603640 (caso adm)</Text>
-                        </View>
-                    </View>
-                    <View style={styles.infoBoxMorador}>
-                        <View style={styles.infoBoxMoradorTitle}>
-                            <Text style={styles.moradorName}>Nome Morador 4</Text>
-                        </View>
-                        <View style={styles.moradorInfo}>
-                            <Text style={styles.moradorInfoText}>Apartamento 2</Text>
-                            <Text style={styles.moradorInfoText}>Bloco 2</Text>
-                            <Text style={styles.moradorInfoText}>morador4@hotmail.com</Text>
-                            <Text style={styles.moradorInfoText}>0987603640 (caso adm)</Text>
-                        </View>
-                    </View>
-                </View>
-            </View>
+            </View> */}
         </View>
 
     );
@@ -93,7 +90,8 @@ const styles = StyleSheet.create({
     cards: {
         display: 'flex',
         width: '100%',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        alignItems: 'center'
     },
     infoBoxNum: {
         backgroundColor: 'white',
@@ -110,6 +108,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
+        justifyContent: 'center',
     },
     infoBoxMorador: {
         backgroundColor: 'white',
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
         marginVertical: '15px',
         width: '15em',
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
     },
     infoBoxMoradorTitle: {
@@ -149,6 +148,12 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     moradorInfo: {
+        display: 'flex',
+        width: '100%',
+        justifyContent: 'flex-start',
+        flexDirection: 'column'
+    },
+    moradorInfoAdm: {
         display: 'flex',
         width: '100%',
         justifyContent: 'flex-start',
