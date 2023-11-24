@@ -2,13 +2,13 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 import { useState } from 'react';
 import axios from 'axios';
 
-const response = await axios.get("http://localhost:8080/morador");
-
 export default function Login(props) {
   const [email, setEmail] = useState('');
   const [cpf, setCpf] = useState('');
 
-  function verifyLogin() {
+  async function verifyLogin() {
+    const response = await axios.get("http://localhost:8080/morador");
+    
     var data = response.data;
     var morador;
 
@@ -20,25 +20,37 @@ export default function Login(props) {
 
     if (morador.adm == true)
       goToSindico();
+
     else
       goToMorador();
 
     sessionStorage.setItem("morador", JSON.stringify(morador));
   }
 
-  function goToCadastro() {
-    props.navigation.navigate("Cadastro")
+  if (sessionStorage.length > 0) {
+    try {
+      var morador = JSON.parse(sessionStorage.getItem("morador"));
+      if (morador.adm == true)
+        goToSindico();
+
+      else
+        goToMorador();
+    }
+    catch (e) {
+      alert("Login Inválido.");
+    }
   }
+
   function goToSindico() {
-    props.navigation.navigate("Sindico")
+    props.navigation.navigate("Sindico");
   }
   function goToMorador() {
-    props.navigation.navigate("Morador")
+    props.navigation.navigate("Morador");
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}> LOGIN </Text>
+      <Text style={styles.titulo}>LOGIN</Text>
       <View style={styles.form}>
         <Text
           style={{
@@ -52,8 +64,7 @@ export default function Login(props) {
           singleline
           maxLength={45}
           style={styles.textAreaEmail}
-          onChangeText = {text => setEmail(text)}
-        />
+          onChangeText={text => setEmail(text)} />
         <Text
           style={{
             paddingHorizontal: '5px',
@@ -66,8 +77,7 @@ export default function Login(props) {
           singleline
           maxLength={45}
           style={styles.textAreaEmail}
-          onChangeText = {text => setCpf(text)}
-        />
+          onChangeText={text => setCpf(text)} />
         <View style={styles.botao}>
           <TouchableOpacity
             style={styles.touch1}
@@ -105,7 +115,8 @@ const styles = StyleSheet.create({
     fontSize: '60px',
     fontWeight: '500',
     color: 'white',
-    marginTop: '80px'
+    marginTop: '80px',
+    fontFamily: 'Comic Sans MS'
   },
   textAreaEmail: {
     backgroundColor: 'white',

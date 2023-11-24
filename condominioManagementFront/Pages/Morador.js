@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-var session = JSON.parse(sessionStorage.getItem("morador"));
-
 export default function Morador(props) {
+    var session = JSON.parse(sessionStorage.getItem("morador"));
+
     function goToDenuncias() {
         props.navigation.navigate("Denuncias")
     }
