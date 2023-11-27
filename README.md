@@ -59,3 +59,11 @@
 - Close to finishing Info page showing all Moradores
 
   ![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/c97f4f9a-deea-4540-a8b4-e2adc457a9bd)
+
+### Nineth Day
+#### Tasks
+- Finished Info Screen
+- Almost finished delete user button
+
+![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/f7a6eb82-cc24-4140-bd93-3ecb4c65d6fe)
+
