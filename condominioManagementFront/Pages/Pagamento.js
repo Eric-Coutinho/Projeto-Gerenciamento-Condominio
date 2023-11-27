@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import QRCode from 'react-native-qrcode-svg'
 
-var session = JSON.parse(sessionStorage.getItem("morador"));
 
 export default function Pagamento(props) {
+    var session = JSON.parse(sessionStorage.getItem("morador"));
 
     return (
         <View style={styles.container}>
