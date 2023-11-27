@@ -5,26 +5,38 @@ const response = await axios.get("http://localhost:8080/morador");
 
 export function ShowCards(props) {
     var data = response.data;
-
     console.log(data);
 
+    async function deleteUser(id){
+        await axios.delete("http://localhost:8080/morador/delete/" + id);
+        window.location.reload(false);
+        
+    }
+
     return data.map((morador, index) => (
-            <View key={index} style={styles.cardMoradores}>
-                <View style={styles.infoBoxMorador}>
-                    <View style={styles.infoBoxMoradorTitle}>
-                        <Text style={styles.moradorName}>{morador.name}</Text>
-                    </View>
-                    <View style={styles.moradorInfoAdm}>
-                        <Text style={styles.moradorInfoText}>Apartamento {morador.numApto}</Text>
-                        <Text style={styles.moradorInfoText}>Bloco {morador.numBloco}</Text>
-                        <Text style={styles.moradorInfoText}>Email: {morador.email}</Text>
-                    </View>
+        <View key={index} style={styles.cardMoradores}>
+            <View style={styles.infoBoxMorador}>
+                <View style={styles.infoBoxMoradorTitle}>
+                    <Text style={styles.moradorName}>{morador.name}</Text>
                 </View>
+                <View style={styles.moradorInfoAdm}>
+                    <Text style={styles.moradorInfoText}>Apartamento {morador.numApto}</Text>
+                    <Text style={styles.moradorInfoText}>Bloco {morador.numBloco}</Text>
+                    <Text style={styles.moradorInfoText}>Email: {morador.email}</Text>
+                    <Text style={styles.moradorInfoText}>Cpf: {morador.cpf}</Text>
+                </View>
+                <TouchableOpacity
+                    style={styles.deleteButton}
+                    onPress={() => deleteUser(morador.id)}
+                >
+                    <Text style={styles.textDelete}>Deletar</Text>
+                </TouchableOpacity>
             </View>
+        </View>
     ));
 }
 
-export default function Info(props) {
+export default function InfoAdm(props) {
     var session = JSON.parse(sessionStorage.getItem("morador"));
 
     return (
@@ -34,7 +46,7 @@ export default function Info(props) {
             </View>
 
             <View style={styles.cards}>
-                <ShowCards/>
+                <ShowCards />
             </View>
         </View>
 
@@ -142,6 +154,18 @@ const styles = StyleSheet.create({
     },
     cardList: {
         display: 'flex',
+    },
+    textDelete: {
+        color: 'white',
+        fontFamily: 'Comic Sans MS',
+        fontWeight: '500',
+        fontSize: '15px',
+    },
+    deleteButton: {
+        backgroundColor: 'red',
+        padding: '10px',
+        marginTop: '8px',
+        borderRadius: '10px',
     }
 
 });

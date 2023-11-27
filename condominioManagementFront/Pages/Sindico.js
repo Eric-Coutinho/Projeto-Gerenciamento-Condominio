@@ -11,8 +11,8 @@ export default function Síndico(props) {
   function goToPagamento() {
     props.navigation.navigate("Pagamento")
   }
-  function goToInfo() {
-    props.navigation.navigate("Info")
+  function goToInfoAdm() {
+    props.navigation.navigate("InfoAdm")
   }
 
   return (
@@ -25,7 +25,7 @@ export default function Síndico(props) {
         <View style={styles.infoBox}>
           <TouchableOpacity
             style={styles.touch1}
-            onPress={() => goToInfo()}
+            onPress={() => goToInfoAdm()}
           >
             <Text style={styles.infoText}>Informações do Condomínio</Text>
           </TouchableOpacity>
