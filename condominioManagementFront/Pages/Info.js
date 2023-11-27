@@ -8,21 +8,8 @@ export function ShowCards(props) {
 
     console.log(data);
 
-    // function isAdm(){
-    //     if(session.getItem("morador").adm == true){
-    //         return(
-    //             <Text style={styles.moradorInfoText}>Cpf: {morador.cpf}</Text>
-    //         )
-    //     }
-    // }
-
     return data.map((morador, index) => (
-        <View key={index} style={styles.cards}>
-            <View style={styles.infoBoxNum}>
-                <Text style={styles.blocoNum}>Bloco {morador.numBloco}</Text>
-            </View>
-
-            <View style={styles.cardMoradores}>
+            <View key={index} style={styles.cardMoradores}>
                 <View style={styles.infoBoxMorador}>
                     <View style={styles.infoBoxMoradorTitle}>
                         <Text style={styles.moradorName}>{morador.name}</Text>
@@ -31,12 +18,10 @@ export function ShowCards(props) {
                         <Text style={styles.moradorInfoText}>Apartamento {morador.numApto}</Text>
                         <Text style={styles.moradorInfoText}>Bloco {morador.numBloco}</Text>
                         <Text style={styles.moradorInfoText}>Email: {morador.email}</Text>
-                        {/* {isAdm()}; */}
                         
                     </View>
                 </View>
             </View>
-        </View>
     ));
 }
 
@@ -46,10 +31,12 @@ export default function Info(props) {
     return (
         <View style={styles.container}>
             <View style={styles.viewTitle}>
-                <Text style={styles.title}>Blocos</Text>
+                <Text style={styles.title}>Moradores</Text>
             </View>
 
-            <ShowCards/>
+            <View style={styles.cards}>
+                <ShowCards/>
+            </View>
         </View>
 
     );
@@ -76,8 +63,10 @@ const styles = StyleSheet.create({
     cards: {
         display: 'flex',
         width: '100%',
-        justifyContent: 'flex-start',
-        alignItems: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
     },
     infoBoxNum: {
         backgroundColor: 'white',
@@ -152,5 +141,8 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         paddingHorizontal: '0.5em',
     },
+    cardList: {
+        display: 'flex',
+    }
 
 });
