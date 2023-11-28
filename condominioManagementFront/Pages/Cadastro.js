@@ -22,6 +22,8 @@ export default function Cadastro(props) {
       });
 
       console.log("Resposta da API", response);
+      window.location.reload(false);
+
     } catch (error) {
       console.error("Erro ao conectar", error);
     }

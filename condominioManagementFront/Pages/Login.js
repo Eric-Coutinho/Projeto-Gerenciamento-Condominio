@@ -57,7 +57,8 @@ export default function Login(props) {
             paddingHorizontal: '5px',
             paddingVertical: '2px',
             color: 'white',
-            marginTop: '50px'
+            marginTop: '50px',
+            fontFamily: 'Comic Sans MS'
           }}>
           Email:</Text>
         <TextInput
@@ -70,7 +71,8 @@ export default function Login(props) {
             paddingHorizontal: '5px',
             paddingVertical: '2px',
             color: 'white',
-            marginTop: '16px'
+            marginTop: '16px',
+            fontFamily: 'Comic Sans MS'
           }}>
           CPF:</Text>
         <TextInput
@@ -83,22 +85,9 @@ export default function Login(props) {
             style={styles.touch1}
             onPress={() => verifyLogin()}
           >
-            <Text>Login</Text>
+            <Text style={{fontFamily: 'Comic Sans MS'}}>Login</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.touch1}
-            onPress={() => goToSindico()}
-          >
-            <Text>Síndico</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.touch1}
-            onPress={() => goToMorador()}
-          >
-            <Text>Morador</Text>
-          </TouchableOpacity>
         </View>
       </View>
     </View>

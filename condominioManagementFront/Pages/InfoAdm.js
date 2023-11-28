@@ -1,19 +1,39 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 const response = await axios.get("http://localhost:8080/morador");
 
 export function ShowCards(props) {
-    var data = response.data;
-    console.log(data);
+    const [moradores, setMoradores] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+          try {
+            const response = await axios.get("http://localhost:8080/morador");
+            setMoradores(response.data);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+        fetchData();
+    }, []);
+
+    // var data = response.data;
+    // console.log(data);
 
     async function deleteUser(id){
-        await axios.delete("http://localhost:8080/morador/delete/" + id);
-        window.location.reload(false);
-        
+        try{
+            await axios.delete("http://localhost:8080/morador/delete/" + id);
+            setMoradores((prevMoradores) => prevMoradores.filter((morador) => morador.id !== id));
+            // window.location.reload(false);
+        }
+        catch (error){
+            console.error("Erro ao deletar morador.");
+        }
     }
 
-    return data.map((morador, index) => (
+    return moradores.map((morador, index) => (
         <View key={index} style={styles.cardMoradores}>
             <View style={styles.infoBoxMorador}>
                 <View style={styles.infoBoxMoradorTitle}>

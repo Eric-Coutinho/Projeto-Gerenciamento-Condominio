@@ -14,6 +14,9 @@ export default function Síndico(props) {
   function goToInfoAdm() {
     props.navigation.navigate("InfoAdm")
   }
+  function goToReservas() {
+    props.navigation.navigate("Reservas")
+}
 
   return (
     <View style={styles.container}>
@@ -42,8 +45,9 @@ export default function Síndico(props) {
         <View style={styles.infoBox}>
           <TouchableOpacity
             style={styles.touch1}
+            onPress={() => goToReservas()}
           >
-            <Text style={styles.infoText}>Reserva de Churrasqueira</Text>
+            <Text style={styles.infoText}>Reservas</Text>
           </TouchableOpacity>
         </View>
 

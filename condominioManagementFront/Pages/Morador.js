@@ -12,6 +12,9 @@ export default function Morador(props) {
     function goToInfo() {
         props.navigation.navigate("Info")
     }
+    function goToReservas() {
+        props.navigation.navigate("Reservas")
+    }
 
     return (
         <View style={styles.container}>
@@ -40,8 +43,9 @@ export default function Morador(props) {
                 <View style={styles.infoBox}>
                     <TouchableOpacity
                         style={styles.touch1}
+                        onPress={() => goToReservas()}
                     >
-                        <Text style={styles.infoText}>Reserva de Churrasqueira</Text>
+                        <Text style={styles.infoText}>Reservas</Text>
                     </TouchableOpacity>
                 </View>
 

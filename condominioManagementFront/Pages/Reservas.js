@@ -1,9 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TextInput, Switch, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated';
 
-export default function Denuncias(props) {
+export default function SelectComponent(){
+    const options = [
+        { value: 'Churrasqueira', label: 'Churrasqueira' },
+        { value: 'SalaoDeFestas', label: 'Salão de Festas' }
+      ]
+    
+    const SelectComponent = () => {
+        <Select closeMenuOnSelect={false}
+        components={animatedComponents}
+        options={options} />
+    }
+}
 
+export default function Reservas(props) {
     //   const dbConnect = async () => {
     //     try {
     //       const response = await axios.post("http://localhost:8080/user", {
@@ -22,24 +36,9 @@ export default function Denuncias(props) {
         <View style={styles.container}>
             <StatusBar style="auto" />
             <View style={styles.viewTitle}>
-                <Text style={styles.title}>Nova Denúncia</Text>
+                <Text style={styles.title}>Nova Reserva</Text>
             </View>
             <View style={styles.form}>
-                <Text
-                    style={{
-                        paddingHorizontal: '5px',
-                        paddingVertical: '2px',
-                        marginTop: '12px',
-                        color: 'white',
-                        fontFamily: 'Comic Sans MS'
-                    }}>
-                    Email:</Text>
-                <TextInput
-                    singleline
-                    maxLength={45}
-                    style={styles.textAreaEmail}
-                />
-
                 <Text
                     style={{
                         paddingHorizontal: '5px',
@@ -54,41 +53,6 @@ export default function Denuncias(props) {
                     maxLength={45}
                     style={styles.textAreaEmail}
                 />
-                <View style={styles.Segunda}>
-                    <View style={styles.formata}>
-                        <Text
-                            style={{
-                                paddingHorizontal: '5px',
-                                paddingVertical: '2px',
-                                color: 'white',
-                                fontFamily: 'Comic Sans MS'
-                            }}>
-                            Número Ap:</Text>
-                        <TextInput
-                            singleline
-                            maxLength={45}
-                            style={styles.textAreaIdade}
-                        />
-                    </View>
-
-                    <View style={styles.formata}>
-                        <Text
-                            style={{
-                                paddingHorizontal: '5px',
-                                paddingVertical: '2px',
-                                marginLeft: '30px',
-                                color: 'white',
-                                fontFamily: 'Comic Sans MS'
-                            }}>
-                            Bloco:</Text>
-                        <TextInput
-                            singleline
-                            maxLength={45}
-                            style={styles.textAreaSexo}
-
-                        />
-                    </View>
-                </View>
 
                 <Text
                     style={{
@@ -99,9 +63,7 @@ export default function Denuncias(props) {
                         fontFamily: 'Comic Sans MS'
                     }}>
                     Motivo Da Denúncia: (max. 240)</Text>
-                <TextInput
-                    multiline
-                    maxLength={240}
+                <SelectComponent
                     style={styles.textAreaEmail}
                 />
 
