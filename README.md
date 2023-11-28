@@ -67,3 +67,9 @@
 
 ![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/f7a6eb82-cc24-4140-bd93-3ecb4c65d6fe)
 
+### Tenth Day
+#### Tasks
+- Finished Info Screen with delete button
+- Started working on reservation page
+
+![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/955d2132-4e85-4d93-b4c1-7a5fb22c602f)
