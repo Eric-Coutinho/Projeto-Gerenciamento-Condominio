@@ -73,3 +73,10 @@
 - Started working on reservation page
 
 ![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/955d2132-4e85-4d93-b4c1-7a5fb22c602f)
+
+### Final Day
+#### Tasks
+- Finished Reservation page connected to DB
+
+![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/04329efb-555a-4c98-8f70-eeb27cf0f318)
+
