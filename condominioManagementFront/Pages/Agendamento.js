@@ -8,7 +8,7 @@ import { enGB, registerTranslation } from 'react-native-paper-dates';
 import React, { useState } from 'react';
 registerTranslation('en-GB', enGB)
 
-export default function Reservas(props) {
+export default function Agendamento(props) {
     var session = JSON.parse(sessionStorage.getItem("morador"));
 
     const [date, setDate] = React.useState(dateMinus(new Date()));
@@ -46,7 +46,7 @@ export default function Reservas(props) {
             await axios.post("http://localhost:8080/reserva", {
                 'cpf': session.cpf,
                 'date': dateToString(funcDate),
-                'tipo': 'Reserva'
+                'tipo': 'Agendamento'
             });
             window.location.reload(false);
         }
@@ -58,7 +58,7 @@ export default function Reservas(props) {
         <View style={styles.container}>
             <StatusBar style="auto" />
             <View style={styles.viewTitle}>
-                <Text style={styles.title}>Nova Reserva</Text>
+                <Text style={styles.title}>Agendar Atividade</Text>
             </View>
             <View style={styles.form}>
                 <Text
@@ -71,8 +71,9 @@ export default function Reservas(props) {
                     }}>
                     Reservar: </Text>
                 <select style={styles.textAreaEmail} id="optionSelect">
-                    <option value="Churrasqueira" style={{ fontFamily: "Comic Sans MS" }}>Churrasqueira</option>
-                    <option value="SalaoDeFestas" style={{ fontFamily: "Comic Sans MS" }}>Salão De Festas</option>
+                    <option value="Churrasqueira" style={{ fontFamily: "Comic Sans MS" }}>Coleta de Lixo</option>
+                    <option value="SalaoDeFestas" style={{ fontFamily: "Comic Sans MS" }}>Assembléia</option>
+                    <option value="SalaoDeFestas" style={{ fontFamily: "Comic Sans MS" }}>Eleição</option>
                 </select>
 
                 <Text

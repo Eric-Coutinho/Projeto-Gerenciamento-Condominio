@@ -19,14 +19,11 @@ export function ShowCards(props) {
         fetchData();
     }, []);
 
-    // var data = response.data;
-    // console.log(data);
 
     async function deleteUser(id){
         try{
             await axios.delete("http://localhost:8080/morador/delete/" + id);
             setMoradores((prevMoradores) => prevMoradores.filter((morador) => morador.id !== id));
-            // window.location.reload(false);
         }
         catch (error){
             console.error("Erro ao deletar morador.");

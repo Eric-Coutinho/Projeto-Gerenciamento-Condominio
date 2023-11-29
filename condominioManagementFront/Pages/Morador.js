@@ -102,6 +102,8 @@ const styles = StyleSheet.create({
         maxWidth: '40%',
     },
     infoBox: {
+        display: 'flex',
+        justifyContent: 'center',
         backgroundColor: 'white',
         padding: '15px',
         borderRadius: '15px',
@@ -130,6 +132,7 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         fontFamily: 'Comic Sans MS',
         marginLeft: '5px',
+        textAlign: 'center'
     },
     infoText2: {
         color: 'black',

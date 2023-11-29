@@ -16,7 +16,11 @@ export default function Síndico(props) {
   }
   function goToReservas() {
     props.navigation.navigate("Reservas")
-}
+  }
+
+  function goToAgendamento() {
+    props.navigation.navigate("Agendamento")
+  }
 
   return (
     <View style={styles.container}>
@@ -47,7 +51,7 @@ export default function Síndico(props) {
             style={styles.touch1}
             onPress={() => goToReservas()}
           >
-            <Text style={styles.infoText}>Reservas</Text>
+            <Text style={styles.infoTextReserva}>Reservas</Text>
           </TouchableOpacity>
         </View>
 
@@ -89,6 +93,7 @@ export default function Síndico(props) {
         <View style={styles.infoBox2}>
           <TouchableOpacity
             style={styles.touch1}
+            onPress={() => goToAgendamento()}
           >
             <Text style={styles.infoText3}>Agendamentos</Text>
           </TouchableOpacity>
@@ -156,7 +161,14 @@ const styles = StyleSheet.create({
     fontSize: '20px',
     fontWeight: '500',
     fontFamily: 'Comic Sans MS',
-    textAlign: 'center'
+    textAlign: 'center',
+  },
+  infoTextReserva: {
+    color: 'black',
+    fontSize: '20px',
+    fontWeight: '500',
+    fontFamily: 'Comic Sans MS',
+    textAlign: 'center',
   },
   infoText2: {
     color: 'black',

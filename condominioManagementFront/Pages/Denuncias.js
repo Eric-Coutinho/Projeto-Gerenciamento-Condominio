@@ -107,14 +107,14 @@ export default function Denuncias(props) {
 
                 <TouchableOpacity
                     style={styles.touch1}
-                // onPress={() => dbConnect()}
+                    onPress={() => window.location.reload(false)}
                 >
-                    <Text style={{fontFamily: 'Comic Sans MS'}}>Enviar Denúncia</Text>
+                    <Text style={{ fontFamily: 'Comic Sans MS' }}>Enviar Denúncia</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     style={styles.touch2}
-                    onPress={() => props.navigation.navigate("Login")}
+                    onPress={() => window.location.reload(false)}
                 >
                     <Text style={{
                         color: 'white',

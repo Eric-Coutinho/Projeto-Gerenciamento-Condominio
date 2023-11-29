@@ -10,6 +10,7 @@ import Denuncias from './Pages/Denuncias'
 import Reservas from './Pages/Reservas'
 import Pagamento from './Pages/Pagamento'
 import Info from './Pages/Info'
+import Agendamento from './Pages/Agendamento'
 import InfoAdm from './Pages/InfoAdm'
 
 export default function App() {
@@ -73,6 +74,10 @@ export default function App() {
         {/* Página Cadastro de Morador - Síndico */}
         <Stack.Screen name="Cadastro" component={Cadastro}
           options={{ title: 'Novo Morador', headerTitleStyle: { fontFamily: 'Comic Sans MS'} }}></Stack.Screen>
+        
+        {/* Página Agendamento - Síndico */}
+        <Stack.Screen name="Agendamento" component={Agendamento}
+          options={{ title: 'Agendamento', headerTitleStyle: { fontFamily: 'Comic Sans MS'} }}></Stack.Screen>
 
       </Stack.Navigator>
     </NavigationContainer>
