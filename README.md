@@ -39,7 +39,7 @@ O aplicativo de gerenciamento de condomínio foi desenvolvido para facilitar a a
 
 - Páginas disponíveis: Login, Cadastro de Moradores, Informações dos moradores cadastrados, Geração de Boletos, Reservas, Assembleias, Denúncias.
 - Diferentes permissões para moradores e síndicos.
-- Use o aplicativo na web em [localhost:8080](http://localhost:8080).
+- Use o aplicativo na web em [localhost:8080](http://localhost:19006).
 
 ## Fluxo de Funcionalidades
 
