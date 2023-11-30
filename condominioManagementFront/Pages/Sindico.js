@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button } from 'react-native';
+import Modal from "react-native-modal";
+import React from 'react';
 
 export default function Síndico(props) {
   var session = JSON.parse(sessionStorage.getItem("morador"));
@@ -17,10 +19,12 @@ export default function Síndico(props) {
   function goToReservas() {
     props.navigation.navigate("Reservas")
   }
-
   function goToAgendamento() {
     props.navigation.navigate("Agendamento")
   }
+
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
   return (
     <View style={styles.container}>
@@ -41,6 +45,7 @@ export default function Síndico(props) {
         <View style={styles.infoBox}>
           <TouchableOpacity
             style={styles.touch1}
+            onPress={() => handleModal()}
           >
             <Text style={styles.infoText}>Informações das Garagens</Text>
           </TouchableOpacity>
@@ -49,9 +54,9 @@ export default function Síndico(props) {
         <View style={styles.infoBox}>
           <TouchableOpacity
             style={styles.touch1}
-            onPress={() => goToReservas()}
+            onPress={() => goToCadastro()}
           >
-            <Text style={styles.infoTextReserva}>Reservas</Text>
+            <Text style={styles.infoTextReserva}>Cadastrar Morador</Text>
           </TouchableOpacity>
         </View>
 
@@ -76,6 +81,7 @@ export default function Síndico(props) {
         <View style={styles.infoBox2}>
           <TouchableOpacity
             style={styles.touch1}
+            onPress={() => handleModal()}
           >
             <Text style={styles.infoText3}>Registros de Segurança</Text>
           </TouchableOpacity>
@@ -84,23 +90,29 @@ export default function Síndico(props) {
         <View style={styles.infoBox2}>
           <TouchableOpacity
             style={styles.touch1}
-            onPress={() => goToCadastro()}
+            onPress={() => goToAgendamento()}
           >
-            <Text style={styles.infoText4}>Cadastrar Morador</Text>
+            <Text style={styles.infoText4}>Agendamentos</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.infoBox2}>
           <TouchableOpacity
             style={styles.touch1}
-            onPress={() => goToAgendamento()}
+            onPress={() => goToReservas()}
           >
-            <Text style={styles.infoText3}>Agendamentos</Text>
+            <Text style={styles.infoText3}>Reservas</Text>
           </TouchableOpacity>
         </View>
-
+        <Modal isVisible={isModalVisible}>
+          <View style={styles.modal}>
+            <View style={styles.modalBox}>
+              <Text style={{ marginBottom: "10px", fontSize: "18px" }}>Página em Desenvolvimento.</Text>
+              <Button color="#242526" title="Ok" onPress={handleModal} />
+            </View>
+          </View>
+        </Modal>
       </View>
-
     </View>
   );
 }
@@ -195,4 +207,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center'
   },
+  modal: {
+    flex: 1,
+    alignItems: "center"
+  },
+  modalBox: {
+    backgroundColor: "white",
+    padding: "10px",
+    borderRadius: "10px"
+  }
 });

@@ -4,12 +4,15 @@ import axios from 'axios';
 
 export default function Denuncias(props) {
 
-    //   const dbConnect = async () => {
+    function returnToPage(){
+        alert("Sistema de Denuncias Não Implementado.");
+        window.location.reload(false)
+    }
+
+    //   const sendDenuncia = async () => {
     //     try {
-    //       const response = await axios.post("http://localhost:8080/user", {
-    //         "name": ":3",
-    //         "age": 69,
-    //         "password": "uwu"
+    //       const response = await axios.post("http://localhost:8080/denuncia", {
+    //         "Motivo": "mijaro aqui mano"
     //       });
 
     //       console.log("Resposta da API", response);
@@ -107,7 +110,8 @@ export default function Denuncias(props) {
 
                 <TouchableOpacity
                     style={styles.touch1}
-                    onPress={() => window.location.reload(false)}
+                    onPress={() => returnToPage()}
+                    // onPress={() => sendDenuncia()}
                 >
                     <Text style={{ fontFamily: 'Comic Sans MS' }}>Enviar Denúncia</Text>
                 </TouchableOpacity>

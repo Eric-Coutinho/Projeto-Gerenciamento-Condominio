@@ -48,6 +48,7 @@ export default function Agendamento(props) {
                 'date': dateToString(funcDate),
                 'tipo': 'Agendamento'
             });
+            alert("Agendado com sucesso!");
             window.location.reload(false);
         }
         else

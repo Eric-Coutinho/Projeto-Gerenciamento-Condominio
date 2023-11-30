@@ -41,6 +41,8 @@ export default function Reservas(props) {
 
     async function makeReserva(funcDate) {
         const searchDate = await axios.get("http://localhost:8080/reserva/tipo/Reserva/date/" + dateToString(funcDate));
+        console.log(funcDate);
+        console.log(typeof funcDate);
 
         if (searchDate.data.length == 0) {
             await axios.post("http://localhost:8080/reserva", {
@@ -48,6 +50,7 @@ export default function Reservas(props) {
                 'date': dateToString(funcDate),
                 'tipo': 'Reserva'
             });
+            alert("Reserva feita com sucesso!");
             window.location.reload(false);
         }
         else
