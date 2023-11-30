@@ -8,6 +8,6 @@ import org.springframework.data.mongodb.repository.Query;
 import com.eric.gerenciamentocondominioapi.model.ReservaModel;
 
 public interface ReservaRepository extends MongoRepository<ReservaModel, String>{
-    @Query("{'type': ?0, 'date': ?1}")
+    @Query("{'tipo': ?0, 'date': ?1}")
     List<ReservaModel> findByDate(String tipo, String date);
 }

@@ -17,6 +17,17 @@ export default function Reservas(props) {
     const [isModalVisible, setIsModalVisible] = React.useState(false);
     const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
+    const options = [
+        { value: 'Churrasqueira', text: 'Churrasqueira' },
+        { value: 'SalaoDeFestas', text: 'Salão de Festas' }
+    ]
+
+    const [selected, setSelected] = useState(options[0].value);
+
+    const handleChange = event => {
+        setSelected(event.target.value);
+    }
+
     function dateMinus(funcDate) {
         var newDate = new Date(funcDate.setDate(funcDate.getDate() - 1));
         return newDate;
@@ -39,16 +50,15 @@ export default function Reservas(props) {
         [setOpen, setDate]
     );
 
+
     async function makeReserva(funcDate) {
         const searchDate = await axios.get("http://localhost:8080/reserva/tipo/Reserva/date/" + dateToString(funcDate));
-        console.log(funcDate);
-        console.log(typeof funcDate);
 
         if (searchDate.data.length == 0) {
             await axios.post("http://localhost:8080/reserva", {
                 'cpf': session.cpf,
                 'date': dateToString(funcDate),
-                'tipo': 'Reserva'
+                'tipo': selected
             });
             alert("Reserva feita com sucesso!");
             window.location.reload(false);
@@ -73,9 +83,12 @@ export default function Reservas(props) {
                         fontFamily: 'Comic Sans MS'
                     }}>
                     Reservar: </Text>
-                <select style={styles.textAreaEmail} id="optionSelect">
-                    <option value="Churrasqueira" style={{ fontFamily: "Comic Sans MS" }}>Churrasqueira</option>
-                    <option value="SalaoDeFestas" style={{ fontFamily: "Comic Sans MS" }}>Salão De Festas</option>
+                <select style={styles.textAreaEmail} id="optionSelect" value={selected} onChange={handleChange} >
+                    {options.map(option => (
+                        <option key={option.value} value={option.value}>
+                            {option.text}
+                        </option>
+                    ))}
                 </select>
 
                 <Text

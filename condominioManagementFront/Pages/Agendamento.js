@@ -17,6 +17,19 @@ export default function Agendamento(props) {
     const [isModalVisible, setIsModalVisible] = React.useState(false);
     const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
+    const options = [
+        { value: 'Lixo', text: 'Coleta de Lixo' },
+        { value: 'Assembleia', text: 'Assembléia' },
+        { value: 'Eleicao', text: 'Eleição' },
+        
+    ]
+
+    const [selected, setSelected] = useState(options[0].value);
+
+    const handleChange = event => {
+        setSelected(event.target.value);
+    }
+
     function dateMinus(funcDate) {
         var newDate = new Date(funcDate.setDate(funcDate.getDate() - 1));
         return newDate;
@@ -46,7 +59,7 @@ export default function Agendamento(props) {
             await axios.post("http://localhost:8080/reserva", {
                 'cpf': session.cpf,
                 'date': dateToString(funcDate),
-                'tipo': 'Agendamento'
+                'tipo': selected
             });
             alert("Agendado com sucesso!");
             window.location.reload(false);
@@ -71,10 +84,12 @@ export default function Agendamento(props) {
                         fontFamily: 'Comic Sans MS'
                     }}>
                     Reservar: </Text>
-                <select style={styles.textAreaEmail} id="optionSelect">
-                    <option value="Churrasqueira" style={{ fontFamily: "Comic Sans MS" }}>Coleta de Lixo</option>
-                    <option value="SalaoDeFestas" style={{ fontFamily: "Comic Sans MS" }}>Assembléia</option>
-                    <option value="SalaoDeFestas" style={{ fontFamily: "Comic Sans MS" }}>Eleição</option>
+                    <select style={styles.textAreaEmail} id="optionSelect" value={selected} onChange={handleChange} >
+                    {options.map(option => (
+                        <option key={option.value} value={option.value}>
+                            {option.text}
+                        </option>
+                    ))}
                 </select>
 
                 <Text
