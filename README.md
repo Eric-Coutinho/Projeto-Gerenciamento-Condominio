@@ -1,82 +1,86 @@
-# Projeto-Gerenciamento-Condominio
+# Documentação do Aplicativo de Gerenciamento de Condomínio
 
-### First Day
-#### Tasks
-- Created GitHub Repository
-- Created Trello for project management
-- Finished Login and Register Screens
+## Introdução
 
-## *** accidentaly deleted trello print of day 1 ***
+O aplicativo de gerenciamento de condomínio foi desenvolvido para facilitar a administração e interação entre moradores e síndicos. Este documento fornece informações necessárias para a instalação, configuração e uso do aplicativo.
 
-### Second Day
-#### Tasks
-- Started Home Screens
-  
-![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/4c4cb47a-8cc5-4bea-91bc-6530c2d72517)
+## Requisitos do Sistema
 
-### Third Day
-#### Tasks
-- Finished Home Screens
-- Started Complains Screen
-  
-![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/500c08bb-4a50-4d54-b3b5-27bed816dc39)
+- Visual Studio Code
+- Extensões do VS Code: Extension Pack for Java, Spring Boot Extension Pack, MongoDB for VS Code
 
-### Fourth Day
-#### Tasks
-- Finished Complains Screen
-- Finished Payment Screen
-- Created MongoDB repository
-- Started BackEnd development on java
+## Instalação
+### No VS Code:
+1. Clone o repositório.
+2. No terminal, navegue até a pasta do backend usando `cd ./condominioManagementBack`.
+3. Execute o arquivo `GerenciamentocondominioapiApplication.java`.
+4. Em outro terminal, navegue até a pasta do frontend usando `cd ./condominioManagementFront`.
+5. Execute `npm install` para instalar as dependências.
+6. Execute `npx expo start` para iniciar o aplicativo.
 
-![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/f82beeb8-77f7-46f9-b507-28189815fd88)
+## Estrutura do Projeto
 
-### Fifth Day
-#### Tasks
-- Finished Moradores Back End
-- Able to add new users, see users, update users and delete users using Postman
-- Started to connect Back End with login system
+- `/condominioManagementBack`: Contém o backend em Java.
+- `/condominioManagementFront`: Contém o frontend em React Native.
 
-![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/2585a2eb-029a-4272-9838-50399ac4afbc)
+## Configuração do Backend
 
-### Sixth Day
-#### Tasks
-- Connected Login page with DataBase
-- Started to connect Back End with register system
+1. Java e Spring Boot são usados para o backend.
+2. Conecte-se ao MongoDB para armazenamento de dados.
+3. Execute o servidor backend.
 
-![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/9ad95e67-d806-4fb2-b264-b5e48e3d294e)
+## Configuração do Frontend
 
-### Seventh Day
-#### Tasks
-- Connected Register system with database
-- Started Info page
+1. React Native e React são usados para o frontend.
+2. Execute `npm install` para instalar as dependências.
+3. Inicie o aplicativo com `npx expo start`.
 
-![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/fdf56fa5-56c0-4ac3-9df4-d180222eb679)
+## Uso do Aplicativo
 
-### Eighth Day
-#### Tasks
-- Finished LogOut system
-- Fixed User Session problem
-- Close to finishing Info page showing all Moradores
+- Páginas disponíveis: Login, Cadastro de Moradores, Informações dos moradores cadastrados, Geração de Boletos, Reservas, Assembleias, Denúncias.
+- Diferentes permissões para moradores e síndicos.
+- Use o aplicativo na web em [localhost:8080](http://localhost:8080).
 
-  ![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/c97f4f9a-deea-4540-a8b4-e2adc457a9bd)
+## Fluxo de Funcionalidades
 
-### Nineth Day
-#### Tasks
-- Finished Info Screen
-- Almost finished delete user button
+### Informações dos Moradores
 
-![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/f7a6eb82-cc24-4140-bd93-3ecb4c65d6fe)
+- Lista com todos os moradores cadastrados e algumas informações como email, número do apartamento e número do bloco
+- Síndico consegue visualizar informações confidenciais como CPF e tem a opção de remover moradores.
 
-### Tenth Day
-#### Tasks
-- Finished Info Screen with delete button
-- Started working on reservation page
+### Login
 
-![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/955d2132-4e85-4d93-b4c1-7a5fb22c602f)
+- Moradores e síndicos têm credenciais diferentes.
 
-### Final Day
-#### Tasks
-- Finished Reservation page connected to DB
+### Cadastro de Moradores
 
-![image](https://github.com/Eric-Coutinho/Projeto-Gerenciamento-Condominio/assets/119637017/04329efb-555a-4c98-8f70-eeb27cf0f318)
+- Apenas síndicos podem acessar e cadastrar novos moradores.
 
+### Geração de Boletos
+
+- Página que gera número de boletos com QR code.
+
+### Reservas
+
+- Moradores podem reservar churrasqueiras e salões de festas.
+
+### Agendamentos
+
+- Síndicos podem agendar assembleias, eleições e coleta de lixo.
+
+### Denúncias
+
+- Moradores podem registrar denúncias.
+- Não está implementado de forma completa, não se conecta com o banco de dados
+
+## Resolução de Problemas
+
+- Problema comum: **Erro de Conexão com o MongoDB**
+  - Solução: Verifique as configurações de conexão no arquivo `application.properties`.
+
+- Problema comum: **Aplicativo não inicia no Expo**
+  - Solução: Certifique-se de ter todas as dependências instaladas e execute `npm install` novamente.
+
+## Atualizações Futuras
+
+- Melhorias planejadas: Ligar a Página de Denúncias com o Banco de Dados, Criar a Página com Informações das Garagens, Página com os Registros de Segurança, Ligar o Pagamento de Boletos com um Sistema Bancário funcional.
